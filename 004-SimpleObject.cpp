@@ -56,6 +56,8 @@ int main() {
 	JSRuntime *rt = JS_NewRuntime();
 	if (rt==NULL)
 		fatal("Can't create js runtime!");
+	JS_SetDumpFlags(rt, 0x200 & 0x10000 );
+	
 	JSContext *ctx = JS_NewContext(rt);
 	if (ctx==NULL)
 		fatal("Can't create js context!");
@@ -84,17 +86,15 @@ int main() {
 		JS_FreeRuntime(rt);	
 		fatal("Failed to eval foo()!");
 	}
-
+	JS_FreeValue(ctx, sumObj);
+	
 	//获取result变量的值
 	JSValue jsResult = JS_GetPropertyStr(ctx, global, "result");
 	int32_t result;
 	JS_ToInt32(ctx, &result, jsResult);
-	printf("Result: %d\n",result);
 	
 	//清理
 	JS_FreeValue(ctx, jsResult);
-	JS_FreeValue(ctx, initialVal);
-	JS_FreeValue(ctx, sumFunc);
 	JS_FreeValue(ctx, global);
 	JS_FreeContext(ctx);
 	JS_FreeRuntime(rt);	

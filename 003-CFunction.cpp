@@ -55,7 +55,6 @@ int main() {
 	
 	//清理
 	JS_FreeValue(ctx,jsResult);
-	JS_FreeValue(ctx,addFunc);
 	JS_FreeValue(ctx,global);
 	JS_FreeContext(ctx);
 	JS_FreeRuntime(rt);	
