@@ -12,8 +12,7 @@ void js_dump_exception(JSContext* ctx);
 //add函数定义
 JSValue add(JSContext *ctx, JSValue this_val, int argc, JSValue* argv) {
 	if (argc!=2) {
-		JS_ThrowRangeError(ctx,"Function add() needs exact 2 arguments!");
-		return JS_EXCEPTION;
+		return JS_ThrowRangeError(ctx,"Function add() needs exact 2 arguments!");
 	}
 	int32_t a,b;
 	JS_ToInt32(ctx, &a, argv[0]);
