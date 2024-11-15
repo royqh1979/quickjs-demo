@@ -86,12 +86,12 @@ int main() {
 		JS_FreeRuntime(rt);	
 		fatal("Failed to eval foo()!");
 	}
-	JS_FreeValue(ctx, sumObj);
 	
 	//获取result变量的值
 	JSValue jsResult = JS_GetPropertyStr(ctx, global, "result");
 	int32_t result;
 	JS_ToInt32(ctx, &result, jsResult);
+	printf("%d\n",result);
 	
 	//清理
 	JS_FreeValue(ctx, jsResult);
