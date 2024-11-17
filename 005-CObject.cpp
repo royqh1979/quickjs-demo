@@ -153,8 +153,6 @@ int main() {
 	JSRuntime *rt = JS_NewRuntime();
 	if (rt==NULL)
 		fatal("Can't create js runtime!");
-	JS_SetDumpFlags(rt, 0x200 & 0x10000 );
-	
 	JSContext *ctx = JS_NewContext(rt);
 	if (ctx==NULL)
 		fatal("Can't create js context!");
